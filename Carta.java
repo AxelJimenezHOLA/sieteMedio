@@ -31,4 +31,9 @@ public class Carta {
     public void voltear() {
         visible = !visible;
     }
+
+    @Override
+    public String toString() {
+        return indice + " de " + palo.toString();
+    }
 }
