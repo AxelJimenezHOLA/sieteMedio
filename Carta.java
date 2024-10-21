@@ -36,4 +36,8 @@ public class Carta {
     public String toString() {
         return indice + " de " + palo.toString();
     }
+
+    public String obtenerDirectorioImagen() {
+        return "imagenes/"+ this +".png";
+    }
 }

@@ -3,20 +3,32 @@ public class Jugador {
     private Mano mano;
 
     public Jugador() {
-        nombre = nombrarJugador();
+        nombre = "";
         mano = new Mano();
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public double getPuntos() {
         return mano.sumarValoresCartas();
     }
 
+    public boolean excedeSieteYMedio() {
+        return getPuntos() > 7.5;
+    }
+
     public void recibirCarta(Carta carta) {
         mano.agregarCarta(carta);
     }
 
-    private String nombrarJugador() {
-        return "TEST NAME";
+    public void limpiarMano() {
+        mano.quitarCartas();
+    }
+
+    public String[] getDirectoriosCartas() {
+        return mano.getDirectoriosCartas();
     }
 
     @Override
