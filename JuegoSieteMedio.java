@@ -5,11 +5,23 @@ public class JuegoSieteMedio {
     private Baraja barajaJuego;
     private boolean terminado = false;
     private boolean hayGanador = false;
+    private int cantidadDeJugadores;
+    private Jugador jugador;
 
     public JuegoSieteMedio() {
+
+
         grupoJugadores = new Grupo();
         barajaJuego = new Baraja(false);
         darCartasIniciales();
+    }
+
+    public void setCantidadDeJugadores(int cantidadDeJugadores) {
+        this.cantidadDeJugadores = cantidadDeJugadores;
+    }
+
+    public int getCantidadDeJugadores() {
+        return cantidadDeJugadores;
     }
 
     public void darCarta() {
@@ -51,6 +63,13 @@ public class JuegoSieteMedio {
         return grupoJugadores.getJugadorActual().getDirectoriosCartas();
 
     }
+    public void crearJugadores() {
+        for (int i = 0; i < cantidadDeJugadores; i++) {
+            grupoJugadores.getJugadores().add(new Jugador());
+
+        }
+        grupoJugadores.establecerPrimerJugador();
+    }
 
     public boolean excedioPuntosJugadorActual() {
         return grupoJugadores.getJugadorActual().excedeSieteYMedio();
@@ -59,6 +78,8 @@ public class JuegoSieteMedio {
     private void darCartasIniciales() {
         grupoJugadores.getJugadores().forEach(jugador -> jugador.recibirCarta(barajaJuego.retirarCarta()));
     }
+
+
 
     private void declararGanador() {
         double puntajeMaximo = 0;
@@ -82,5 +103,14 @@ public class JuegoSieteMedio {
 
     public boolean hayGanador() {
         return hayGanador;
+    }
+
+    public Jugador getJugador() {
+
+        return jugador;
+    }
+
+    public void setJugador(Jugador jugador) {
+        this.jugador = jugador;
     }
 }
